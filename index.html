@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="css/style.css"></link>
+    <script type="text/javascript" src="js/Target.js"></script>
+    <script type="text/javascript" src="js/Ghost.js"></script>
+    <script type="text/javascript" src="js/Chris.js"></script>
+    <script type="text/javascript" src="js/App.js"></script>
+    <script type="text/javascript" src="js/MIDI_CONNECTION.js"></script>
+    <script type = "text/javascript" src="js/leap.min.js"></script>
+
+  </head>
+ <body style ="background-image:url(data/background.svg);">
+    <canvas id="canvas"></canvas>
+
+    <img id = "audioSource" src = "data/audioOn.svg" style = "display:none;" />
+
+    <script type="text/javascript">
+
+        var image = new Image();
+        image.src = "data/audioOn.svg";
+        var pic = document.getElementById("canvas");
+        pic.getContext('2d').drawImage(image, 0,0);
+
+
+        var app = new App();
+        // var midi = new MIDI_CONNECTION(app);
+
+        //utils this is the map function to remap size
+        Number.prototype.map = function (in_min, in_max, out_min, out_max) {
+          return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        }
+
+        document.body.onclick = app.toggleVolume;
+    </script>
+
+  </body>
+</html>
